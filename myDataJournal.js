@@ -41,9 +41,31 @@ function averageSleep(data){
   return totalSleep / data.length;
 }
 
+function mostFrequentMood(data){
+const moodCounts = {};
+
+for (let day of data){
+  const mood = day.mood;
+  moodCounts[mood] = (moodCounts[mood] || 0) +1;
+}
+let topMood = ""
+let topCount = 0;
+
+for (let mood in moodCounts){
+  if (moodCounts[mood] > topCount){
+    topMood = mood;
+    topCount = moodCounts[mood];
+    }
+  }
+  return topMood;
+} 
+
 //Results (Output)
 const highestScreenDay = findHighestScreenTime(weekData);
 console.log(`Highest Screen Time: ${highestScreenDay.day} (${highestScreenDay.screenTime} hrs)`);
 
 const avgSleep = averageSleep(weekData);
 console.log(`Average Sleep: ${avgSleep.toFixed(1)} hrs`);
+
+const frequentMood = mostFrequentMood(weekData);
+console.log(`Most Frequent Mood: "${frequentMood}"`);
