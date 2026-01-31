@@ -9,6 +9,7 @@ Repository: https://github.com/beaglrz/cs81-module4b-mydataexplorer
 - Is more caffeine helping? I don't believe so
 */
 
+//Data (Input)
 const weekData = [
   { day: "Monday", sleepHours: 9, screenTime: 5.5, mood: "busy", caffeineIntake: 1, focusLevel: 6 },
   { day: "Tuesday", sleepHours: 7, screenTime: 5, mood: "productive", caffeineIntake: 0, focusLevel: 7 },
@@ -19,6 +20,7 @@ const weekData = [
   { day: "Sunday", sleepHours: 8, screenTime: 4, mood: "relaxed", caffeineIntake: 1, focusLevel: 8 }
 ];
 
+//Functions
 function findHighestScreenTime(data) {
   let maxDay = data[0];
 
@@ -30,6 +32,18 @@ function findHighestScreenTime(data) {
   return maxDay;
 }
 
+function averageSleep(data){
+  let totalSleep = 0;
+
+  for (let day of data){
+    totalSleep += day.sleepHours;
+  }
+  return totalSleep / data.length;
+}
+
+//Results (Output)
 const highestScreenDay = findHighestScreenTime(weekData);
 console.log(`Highest Screen Time: ${highestScreenDay.day} (${highestScreenDay.screenTime} hrs)`);
 
+const avgSleep = averageSleep(weekData);
+console.log(`Average Sleep: ${avgSleep.toFixed(1)} hrs`);
