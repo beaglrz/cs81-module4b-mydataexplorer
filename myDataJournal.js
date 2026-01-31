@@ -19,3 +19,17 @@ const weekData = [
   { day: "Sunday", sleepHours: 8, screenTime: 4, mood: "relaxed", caffeineIntake: 1, focusLevel: 8 }
 ];
 
+function findHighestScreenTime(data) {
+  let maxDay = data[0];
+
+  for (let day of data) {
+    if (day.screenTime > maxDay.screenTime){
+      maxDay = day;
+    }
+  }
+  return maxDay;
+}
+
+const highestScreenDay = findHighestScreenTime(weekData);
+console.log(`Highest Screen Time: ${highestScreenDay.day} (${highestScreenDay.screenTime} hrs)`);
+
